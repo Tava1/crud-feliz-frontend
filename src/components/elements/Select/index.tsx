@@ -20,7 +20,7 @@ const Select: React.FC<InputProps> = ({ id, name, options, label, ...rest }) => 
       >
         <option value='0'>Selecione</option>
         {options && options.map(option => (
-          <option value={option}>{option}</option>
+          <option key={option} value={option}>{option}</option>
         ))}
       </select>
     </Container>

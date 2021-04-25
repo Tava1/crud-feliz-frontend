@@ -1,4 +1,5 @@
 import { FaList } from 'react-icons/fa';
+import Link from 'next/link';
 
 import Header from '../../components/modules/Header';
 import Footer from '../../components/modules/Footer';
@@ -7,7 +8,7 @@ import Input from '../../components/elements/Input';
 import Select from '../../components/elements/Select';
 import Button from '../../components/elements/Button';
 
-import { Nav, Container, Content, Line } from './styles';
+import { Nav, Container, Content, Line } from '../../styles/pages/Create';
 
 const estadoCivil = ['Solteiro(a)', 'Casado(a)'];
 
@@ -18,7 +19,11 @@ export default function Create() {
 
       <Container>
         <Nav>
-          <Button anchor={true} icon={FaList}>Visualizar lista</Button>
+          <Link href="/List">
+            <a>
+              <Button anchor={true} icon={FaList}>Visualizar lista</Button>
+            </a>
+          </Link>
         </Nav>
         <Line />
         <Content>
