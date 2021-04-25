@@ -9,13 +9,15 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   primary?: boolean;
   secondary?: boolean;
   anchor?: boolean;
+  delete?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ primary: isPrimary, secondary: isSecondary, anchor: isAnchor, icon: Icon, children, ...rest }) => (
+const Button: React.FC<ButtonProps> = ({ primary: isPrimary, secondary: isSecondary, anchor: isAnchor, delete: isDelete, icon: Icon, children, ...rest }) => (
   <Container
     primary={!!isPrimary}
     secondary={!!isSecondary}
     anchor={!!isAnchor}
+    delete={!!isDelete}
     hasIcon={!!children}
     {...rest}
   >

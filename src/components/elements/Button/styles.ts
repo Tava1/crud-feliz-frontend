@@ -6,6 +6,7 @@ interface ContainerProps {
   primary: boolean;
   secondary: boolean;
   anchor: boolean;
+  delete: boolean;
 }
 
 export const Container = styled.button<ContainerProps>`
@@ -59,7 +60,7 @@ export const Container = styled.button<ContainerProps>`
     `
   }
 
-${props => props.anchor &&
+  ${props => props.anchor &&
     css`
       border: 1px solid #2CAD7F;
       background: #2CAD7F;
@@ -67,6 +68,20 @@ ${props => props.anchor &&
 
       &:hover {
         background: ${shade(0.1, '#2CAD7F')};
+        color: #FCFCFC;
+      }
+    `
+  }
+
+${props => props.delete &&
+    css`
+      border: 1px solid #F83838;
+      background: #FCFCFC;
+      color: #F83838;
+      padding: 1rem 2rem;
+
+      &:hover {
+        background: ${shade(0.1, '#F83838')};
         color: #FCFCFC;
       }
     `
