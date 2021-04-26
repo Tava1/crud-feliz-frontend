@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Um CRUD Muito feliz :atom_symbol:
+...
 
-## Getting Started
+## Visite o site :link:
 
-First, run the development server:
+A aplicação pode ser visitada a qualquer momento pelo link: [https://crud-feliz-frontend.vercel.app/](https://crud-feliz-frontend.vercel.app/)
 
-```bash
-npm run dev
-# or
+Publicação realizada pelo [Vercel](https://vercel.com/).
+
+## Sobre o projeto
+...
+
+### Tecnologias utilizadas
+- [React](https://pt-br.reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Styled Components](https://styled-components.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+
+### Protótipos (Mockups)
+Visite o [projeto no Figma](https://www.figma.com/file/CXqPSdVHdIUefjw7cnRafn/Um-pequeno-CRUD?node-id=0%3A1) para conferir o protótipo.
+
+## Vamos começar? :smiley:
+### Instalação do projeto
+
+Após clonar o projeto do [repositório Github](https://github.com/Tava1/crud-feliz-frontend), navegue até a raiz e execute o seguinte comando no terminal:
+
+Este comando irá instalar todas as dependências necessárias do projeto.
+```BASH
+yarn
+```
+
+Após a instalação das depências, podemos utilizar alguns comando disponíveis.
+
+### :construction: Ambiente de desenvolvimento
+Executar o projeto em ambiente local de desenvolvimento.
+```BASH
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### :wrench: Build do projeto
+Para realizar o build do projeto.
+```BASH
+yarn build
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Estrutura de diretórios do projeto
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### src
+Este diretório armazena todo o código desenvolvido ou seja, lógica da aplicação, componentes, páginas, rotas, serviços e etc.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### components/elements
+Contém apenas componentes estáticos, poder ser utilizado pelos ```components/mudules``` ou até mesmo por ```/pages```.
 
-## Learn More
+### components/modules
+Contém componentes mais robustos, aqueles que podem conter lógica e/ou receber ```props```.
 
-To learn more about Next.js, take a look at the following resources:
+### pages
+Armazena as páginas/rotas da apalicação.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### services
+...
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### styles
+Arquivos de estilos globais e também estilos das páginas são armazenados aqui.
