@@ -47,6 +47,7 @@ export default function Edit() {
 
   const [person, setPerson] = useState<Person>({} as Person);
   const [loading, setLoading] = useState(true);
+  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
   useEffect(() => {
     api.get(`people/${id}`).then(response => {
@@ -71,15 +72,13 @@ export default function Edit() {
     })
   }, []);
 
-  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
-
   const handleUpdatePerson = async (data) => {
     console.log(data)
-    await api.put('people', data).then(response => {
+    await api.put(`people/${id}`, data).then(response => {
       const { status } = response;
 
-      if (status === 201) {
-        console.log('Criado com sucesso!')
+      if (status === 200) {
+        console.log('Atualizado com sucesso!')
         router.push('/');
       }
     });
@@ -152,8 +151,8 @@ export default function Edit() {
                     <Select
                       label="ESTADO CIVIL"
                       options={maritalStatus}
-                      id="marital-status"
-                      name="marital-status"
+                      id="marital_status"
+                      name="marital_status"
                       required
                       register={register}
                       error={errors.marital_status?.message}

@@ -9,7 +9,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   register: UseFormRegister<any>;
   required: boolean;
-  error: string;
+  error?: string;
 }
 
 const Input = ({ id, name, label, register, required, error, ...rest }: InputProps) => (

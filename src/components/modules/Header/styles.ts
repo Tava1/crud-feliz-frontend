@@ -8,6 +8,15 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
 
+  @media screen and (min-width: 768px) {
+    margin: 0 2rem;
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 900px;
+    margin: 0 auto;
+  }
+
   .logo {
     a {
       h1 {

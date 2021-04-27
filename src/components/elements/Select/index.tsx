@@ -10,7 +10,7 @@ interface InputProps extends SelectHTMLAttributes<HTMLSelectElement> {
   name: string;
   register: UseFormRegister<any>;
   required: boolean;
-  error: string;
+  error?: string;
 }
 
 const Select: React.FC<InputProps> = ({ id, name, options, label, register, required, error, ...rest }) => (
