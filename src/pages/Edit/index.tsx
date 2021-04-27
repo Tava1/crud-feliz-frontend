@@ -25,6 +25,7 @@ const cities = ['São Paulo', 'Campinas', 'Curitiba'];
 const schema = yup.object().shape({
   name: yup.string().required('Campo obrigatório.'),
   age: yup.number().typeError('A idade deve ser válida.').required('Campo obrigatório.').positive('A idade deve ser válida.').integer('A idade deve ser válida.'),
+  cpf: yup.string().min(11, 'CPF deve ser válido.').max(11, 'CPF deve ser válido.').required('Campo obrigatório.'),
   marital_status: yup.string().required('Campo obrigatório.'),
   state: yup.string().required('Campo obrigatório.'),
   city: yup.string().required('Campo obrigatório.'),
@@ -73,6 +74,7 @@ export default function Edit() {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
   const handleUpdatePerson = async (data) => {
+    console.log(data)
     await api.put('people', data).then(response => {
       const { status } = response;
 
@@ -142,7 +144,6 @@ export default function Edit() {
                       required
                       register={register}
                       error={errors.cpf?.message}
-                      disabled
                       defaultValue={person.cpf}
                     />
                   </div>

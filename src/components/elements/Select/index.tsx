@@ -24,10 +24,11 @@ const Select: React.FC<InputProps> = ({ id, name, options, label, register, requ
     >
       <option value="">Selecione</option>
       {options && options.map(option => (
-        <option key={option} value={option}>{option}</option>
+        <option key={options.indexOf(option)} value={option}>{option}</option>
       ))}
     </select>
-    {error &&
+    {
+      error &&
       <div>
         <Error>
           <div>
@@ -36,7 +37,7 @@ const Select: React.FC<InputProps> = ({ id, name, options, label, register, requ
         </Error>
       </div>
     }
-  </Container>
+  </Container >
 );
 
 
