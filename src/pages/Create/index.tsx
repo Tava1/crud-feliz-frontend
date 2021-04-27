@@ -4,17 +4,21 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import Header from '../../components/modules/Header';
 import Footer from '../../components/modules/Footer';
-
 import Input from '../../components/elements/Input';
 import Select from '../../components/elements/Select';
 import Button from '../../components/elements/Button';
 
+import api from '../../services/api';
+
 import { Nav, Container, Content, Line } from '../../styles/pages/Create';
 
-const estadoCivil = ['Solteiro(a)', 'Casado(a)'];
+const maritalStatus = ['Solteiro(a)', 'Casado(a)'];
+const states = ['SP', 'PR'];
+const cities = ['São Paulo', 'Campinas', 'Curitiba'];
 
 const schema = yup.object().shape({
   name: yup.string().required('Campo obrigatório.'),
@@ -23,14 +27,24 @@ const schema = yup.object().shape({
   marital_status: yup.string().required('Campo obrigatório.'),
   state: yup.string().required('Campo obrigatório.'),
   city: yup.string().required('Campo obrigatório.'),
-})
+});
 
 export default function Create() {
-
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
+  const router = useRouter();
+
   const handleNewPerson = async (data) => {
-    console.log(data);
+    await api.post('people', data).then(response => {
+      const { status } = response;
+
+      if (status === 201) {
+        console.log('Criado com sucesso!')
+        router.push('/');
+      }
+    }).catch((error) => {
+      console.log(error);
+    });
   };
 
   return (
@@ -94,7 +108,7 @@ export default function Create() {
                 <div className="marital-status">
                   <Select
                     label="ESTADO CIVIL"
-                    options={estadoCivil}
+                    options={maritalStatus}
                     id="marital_status"
                     name="marital_status"
                     required
@@ -116,9 +130,9 @@ export default function Create() {
                     label="ESTADO"
                     id="state"
                     name="state"
-                    options={estadoCivil}
-                    register={register}
+                    options={states}
                     required
+                    register={register}
                     error={errors.state?.message}
                   />
                 </div>
@@ -128,9 +142,9 @@ export default function Create() {
                     label="CIDADE"
                     id="city"
                     name="city"
-                    options={estadoCivil}
-                    register={register}
+                    options={cities}
                     required
+                    register={register}
                     error={errors.city?.message}
                   />
                 </div>
@@ -139,6 +153,7 @@ export default function Create() {
               <div className="btn-group">
                 <Button
                   secondary={true}
+                  onClick={() => router.push('/')}
                 >
                   Cancelar
                 </Button>
