@@ -1,4 +1,8 @@
 import { FaList } from 'react-icons/fa';
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
 import Link from 'next/link';
 
 import Header from '../../components/modules/Header';
@@ -12,11 +16,26 @@ import { Nav, Container, Content, Line } from '../../styles/pages/Create';
 
 const estadoCivil = ['Solteiro(a)', 'Casado(a)'];
 
+const schema = yup.object().shape({
+  name: yup.string().required('Campo obrigatório.'),
+  age: yup.number().typeError('A idade deve ser válida.').required('Campo obrigatório.').positive('A idade deve ser válida.').integer('A idade deve ser válida.'),
+  cpf: yup.string().min(11, 'CPF deve ser válido.').max(11, 'CPF deve ser válido.').required('Campo obrigatório.'),
+  marital_status: yup.string().required('Campo obrigatório.'),
+  state: yup.string().required('Campo obrigatório.'),
+  city: yup.string().required('Campo obrigatório.'),
+})
+
 export default function Create() {
+
+  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
+
+  const handleNewPerson = async (data) => {
+    console.log(data);
+  };
+
   return (
     <>
       <Header />
-
       <Container>
         <Nav>
           <Link href="/List">
@@ -29,7 +48,7 @@ export default function Create() {
         <Content>
           <h2>NOVA PESSOA 💾</h2>
           <h3>INFORMAÇÕES PESSOAIS</h3>
-          <form>
+          <form onSubmit={handleSubmit(handleNewPerson)}>
             <div className="group">
               <div className="input-group grid">
 
@@ -40,6 +59,8 @@ export default function Create() {
                     id="name"
                     name="name"
                     required
+                    register={register}
+                    error={errors.name?.message}
                   />
                 </div>
 
@@ -51,6 +72,8 @@ export default function Create() {
                     id="age"
                     name="age"
                     required
+                    register={register}
+                    error={errors.age?.message}
                   />
                 </div>
               </div>
@@ -63,6 +86,8 @@ export default function Create() {
                     id="cpf"
                     name="cpf"
                     required
+                    register={register}
+                    error={errors.cpf?.message}
                   />
                 </div>
 
@@ -70,9 +95,11 @@ export default function Create() {
                   <Select
                     label="ESTADO CIVIL"
                     options={estadoCivil}
-                    id="marital-status"
-                    name="marital-status"
+                    id="marital_status"
+                    name="marital_status"
                     required
+                    register={register}
+                    error={errors.marital_status?.message}
                   />
                 </div>
               </div>
@@ -90,7 +117,9 @@ export default function Create() {
                     id="state"
                     name="state"
                     options={estadoCivil}
+                    register={register}
                     required
+                    error={errors.state?.message}
                   />
                 </div>
 
@@ -100,14 +129,26 @@ export default function Create() {
                     id="city"
                     name="city"
                     options={estadoCivil}
+                    register={register}
                     required
+                    error={errors.city?.message}
                   />
                 </div>
               </div>
 
               <div className="btn-group">
-                <Button secondary={true} >Cancelar</Button>
-                <Button primary={true} type="submit">Registrar</Button>
+                <Button
+                  secondary={true}
+                >
+                  Cancelar
+                </Button>
+
+                <Button
+                  primary={true}
+                  type="submit"
+                >
+                  Registrar
+                </Button>
               </div>
             </div>
 

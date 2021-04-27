@@ -8,7 +8,7 @@ const Card: React.FC = () => (
   <Container>
 
     <div className="context">
-      <Link href="/">
+      <Link href="/Edit">
         <a>
           <FaUserCircle size={60} />
           <div className="info">

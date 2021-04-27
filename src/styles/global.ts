@@ -46,7 +46,10 @@ export default createGlobalStyle`
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
-    grid-gap: 10px;
+
+    @media screen and (min-width: 768px) {
+      grid-gap: 10px;
+    }
   }
 
 `;

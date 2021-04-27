@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  position: relative;
 
   label {
     margin-bottom: 0.3rem;
@@ -17,8 +18,21 @@ export const Container = styled.div`
     border-radius: 4px;
     border: 1px solid #171717;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     padding: 0 1rem;
     color: #171717;
   }
+
+  & > div {
+    height: 0.5rem;
+    margin-bottom: 0.8rem;
+
+    display: flex;
+    align-self: flex-end;
+  }
+`;
+
+export const Error = styled.div`
+  color: #F83838;
+  font-size: 12px;
 `;
