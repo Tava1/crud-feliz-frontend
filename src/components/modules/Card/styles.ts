@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  /* width: 100%; */
   height: 100px;
   background: #F6F6F6;
   border-radius: 4px;
@@ -77,12 +76,10 @@ export const Container = styled.div`
   .delete {
     border-left: 1px solid #D2D2D2;
 
-    a {
-      padding: 0 1rem;
-
-      svg {
-        color: #F83838;
-      }
+    button {
+      border: none;
+      background: transparent;
+      padding: 0 0.5rem;
     }
   }
 `;
